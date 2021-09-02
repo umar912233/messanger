@@ -21,6 +21,7 @@ app.use(json());
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (_req, res) {
   res.send('Hello World');
+  
 });
 
 // Adds support for GET requests to our webhook
