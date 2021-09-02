@@ -53,13 +53,15 @@ app.get('/webhook', (req, res) => {
 app.post('/webhook', (req, res) => {
   let body = req.body;
 
+  console.log(body.entry);
+
   // Checks if this is an event from a page subscription
   if (body.object === 'page') {
 
     // Iterates over each entry - there may be multiple if batched
     body.entry.forEach(function(entry) {
 
-      console.log(entry);
+    
 
       // Gets the body of the webhook event
       // let webhookEvent = entry.messaging[0];
