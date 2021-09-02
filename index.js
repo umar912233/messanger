@@ -12,6 +12,8 @@ const
 app.post('/webhook', (req, res) => {  
  
     let body = req.body;
+
+    console.log(req);
   
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
@@ -19,13 +21,13 @@ app.post('/webhook', (req, res) => {
       body.entry.forEach(function(entry) {
         console.log(entry);
 
-        // // Gets the body of the webhook event
-        // let webhook_event = entry.messaging[0];
-        // console.log(webhook_event);
+        // Gets the body of the webhook event
+        let webhook_event = entry.messaging[0];
+        console.log(webhook_event);
       
-        // // Get the sender PSID
-        // let sender_psid = webhook_event.sender.id;
-        // console.log('Sender PSID: ' + sender_psid);
+        // Get the sender PSID
+        let sender_psid = webhook_event.sender.id;
+        console.log('Sender PSID: ' + sender_psid);
       
       });
   
