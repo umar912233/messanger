@@ -19,7 +19,6 @@ app.post('/webhook', (req, res) => {
     if (body.object === 'page') {
   
       body.entry.forEach(function(entry) {
-        console.log(entry);
 
         // Gets the body of the webhook event
         let webhook_event = entry.messaging[0];
