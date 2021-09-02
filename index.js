@@ -8,8 +8,10 @@ const
   request = require('request'),
   express = require('express'),
   { urlencoded, json } = require('body-parser'),
-  app = express();
+  app = express(),
+  bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
 // Parse application/x-www-form-urlencoded
 app.use(urlencoded({ extended: true }));
 
