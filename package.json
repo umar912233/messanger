@@ -1,0 +1,15 @@
+{
+  "name": "messanger-webhook",
+  "version": "1.0.0",
+  "description": "messanger webhook for messanfer chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "muhammad Umar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
