@@ -29,7 +29,7 @@ app.get('/webhook', (req, res) => {
 
   // Your verify token. Should be a random string.
   const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
-
+  console.log(req);
   // Parse the query params
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
@@ -55,7 +55,7 @@ app.get('/webhook', (req, res) => {
 // Creates the endpoint for your webhook
 app.post('/webhook', (req, res) => {
   let body = req.body;
-
+  console.log(req);
   // Checks if this is an event from a page subscription
   if (body.object === 'page') {
 
