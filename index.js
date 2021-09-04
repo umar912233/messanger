@@ -62,9 +62,9 @@ app.post('/webhook', (req, res) => {
     // Iterates over each entry - there may be multiple if batched
     body.entry.forEach(function(entry) {
 
-     /// Gets the body of the webhook event
+      /// Gets the body of the webhook event
       let webhookEvent = entry.messaging[0];
-     
+
       // Get the sender PSID
       let senderPsid = webhookEvent.sender.id;
 
