@@ -21,7 +21,7 @@ app.use(json());
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get('/', function (_req, res) {
   res.send('Hello World');
-  
+
 });
 
 // Adds support for GET requests to our webhook
@@ -56,21 +56,22 @@ app.get('/webhook', (req, res) => {
 app.post('/webhook', (req, res) => {
   let body = req.body;
 
-  console.log(body.entry);
-
   // Checks if this is an event from a page subscription
   if (body.object === 'page') {
 
     // Iterates over each entry - there may be multiple if batched
     body.entry.forEach(function(entry) {
 
+      console.log(entry);
+
      /// Gets the body of the webhook event
       let webhookEvent = entry.messaging[0];
-      console.log(webhookEvent);
+     
+
+      
 
       // Get the sender PSID
       let senderPsid = webhookEvent.sender.id;
-      console.log('Sender PSID: ' + senderPsid);
 
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
