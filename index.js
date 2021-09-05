@@ -76,7 +76,6 @@ app.post('/webhook', (req, res) => {
         response = {
           'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
         };
-    
         res.status(200).send(response);
         console.log('this is if condition console');
       } else if (webhookEvent.postback) {
