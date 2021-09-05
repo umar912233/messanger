@@ -159,19 +159,13 @@ function callSendAPI(senderPsid, response) {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
   // Construct the message body
-  let requestBody = {"messaging_type": "text",
+  let requestBody = {
+ "messaging_type": "text",
 "recipient":{
   "id": senderPsid
 },
 "message":{
-  "text": response,
-  "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Red",
-        "payload":"payload"
-      }
-    ]
+  "text": response
 }
 };
 
