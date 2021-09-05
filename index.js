@@ -164,7 +164,14 @@ function callSendAPI(senderPsid, response) {
   "id": senderPsid
 },
 "message":{
-  "text": response
+  "text": response,
+  "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Red",
+        "payload":"payload"
+      }
+    ]
 }
 };
 
