@@ -73,6 +73,11 @@ app.post('/webhook', (req, res) => {
       // pass the event to the appropriate handler function
       if (webhookEvent.message) {
         handleMessage(senderPsid, webhookEvent.message);
+        response = {
+          'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
+        };
+    
+        res.status(200).send(response);
         console.log('this is if condition console');
       } else if (webhookEvent.postback) {
         handlePostback(senderPsid, webhookEvent.postback);
@@ -98,11 +103,7 @@ function handleMessage(senderPsid, receivedMessage) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
 
-    response = {
-      'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
-    };
-
-    res.send(response);
+    
 
   }
 
