@@ -55,7 +55,6 @@ app.get('/webhook', (req, res) => {
 // Creates the endpoint for your webhook
 app.post('/webhook', (req, res) => {
   let body = req.body;
-  console.log(JSON.stringify(body));
   // Checks if this is an event from a page subscription
   if (body.object === 'page') {
 
@@ -64,7 +63,7 @@ app.post('/webhook', (req, res) => {
 
       /// Gets the body of the webhook event
       let webhookEvent = entry.messaging[0];
-     
+      console.log(JSON.stringify(webhookEvent));
      
       // Get the sender PSID
       let senderPsid = webhookEvent.sender.id;
@@ -73,14 +72,9 @@ app.post('/webhook', (req, res) => {
       // pass the event to the appropriate handler function
       if (webhookEvent.message) {
         handleMessage(senderPsid, webhookEvent.message);
-        response = {
-          'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
-        };
-        res.status(200).send(response);
-        console.log('this is if condition console');
+        
       } else if (webhookEvent.postback) {
         handlePostback(senderPsid, webhookEvent.postback);
-        console.log('this is if postback console');
       }
     });
 
@@ -101,9 +95,38 @@ function handleMessage(senderPsid, receivedMessage) {
   if (receivedMessage.text) {
     // Create the payload for a basic text message, which
     // will be added to the body of your request to the Send API
+    response = {
+      'text': `You sent the message: '${receivedMessage.text}'. Now send me an attachment!`
+    };
+  } else if (receivedMessage.attachments) {
 
-    
-
+    // Get the URL of the message attachment
+    let attachmentUrl = receivedMessage.attachments[0].payload.url;
+    response = {
+      'attachment': {
+        'type': 'template',
+        'payload': {
+          'template_type': 'generic',
+          'elements': [{
+            'title': 'Is this the right picture?',
+            'subtitle': 'Tap a button to answer.',
+            'image_url': attachmentUrl,
+            'buttons': [
+              {
+                'type': 'postback',
+                'title': 'Yes!',
+                'payload': 'yes',
+              },
+              {
+                'type': 'postback',
+                'title': 'No!',
+                'payload': 'no',
+              }
+            ],
+          }]
+        }
+      }
+    };
   }
 
   // Send the response message
@@ -135,16 +158,12 @@ function callSendAPI(senderPsid, response) {
 
   // Construct the message body
   let requestBody = {
- "messaging_type": "text",
-"recipient":{
-  "id": senderPsid
-},
-"message":{
-  "text": response
-}
-};
+    'recipient': {
+      'id': senderPsid
+    },
+    'message': response
+  };
 
-  // Send the HTTP request to the Messenger Platform
   request({
     'uri': 'https://graph.facebook.com/v11.0/me/messages?access_token='+PAGE_ACCESS_TOKEN,
     'method': 'POST',
