@@ -76,6 +76,7 @@ app.post('/webhook', (req, res) => {
         console.log('this is if condition console');
       } else if (webhookEvent.postback) {
         handlePostback(senderPsid, webhookEvent.postback);
+        console.log('this is if postback console');
       }
     });
 
