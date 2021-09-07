@@ -24,7 +24,9 @@ let postWebhook = (req, res) =>{
             // pass the event to the appropriate handler function
             if (webhook_event.message) {
                 handleMessage(sender_psid, webhook_event.message);
+                console.log('messagemode');
             } else if (webhook_event.postback) {
+                console.log('postmode');
                 handlePostback(sender_psid, webhook_event.postback);
             }
 
