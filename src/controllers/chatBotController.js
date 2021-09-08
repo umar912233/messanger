@@ -149,20 +149,19 @@ function callSendAPI(sender_psid, response) {
         if (!err) {
             console.log('message sent!');
             console.log(body);
-            console.log(res);
         } else {
             console.error("Unable to send message:" + err);
         }
     });
 }
 
-// function firstTrait(nlp, name) {
-//     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
-// }
-
 function firstTrait(nlp, name) {
-    return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
+    return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
 }
+
+// function firstTrait(nlp, name) {
+//     return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
+// }
 
 // function handleMessage(sender_psid, message) {
 //     //handle message for react, like press like button
