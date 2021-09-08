@@ -13,9 +13,6 @@ let postWebhook = (req, res) =>{
 
             // Gets the body of the webhook event
             let webhook_event = entry.messaging[0];
-            console.log(webhook_event);
-
-
             // Get the sender PSID
             let sender_psid = webhook_event.sender.id;
             console.log('Sender PSID: ' + sender_psid);
@@ -78,6 +75,7 @@ function handleMessage(sender_psid, received_message) {
         response = {
             "text": `You sent the message: "${received_message.text}". Now send me an image!`
         }
+        console.log(response); 
     } else if (received_message.attachments) {
 
     // Gets the URL of the message attachment
@@ -234,7 +232,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
     };
 
     request({
-        "uri": "https://graph.facebook.com/v6.0/me/messages",
+        "uri": "https://graph.facebook.com/v11.0/me/messages",
         "qs": { "access_token": process.env.FB_PAGE_TOKEN },
         "method": "POST",
         "json": body
