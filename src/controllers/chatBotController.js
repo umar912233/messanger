@@ -148,14 +148,14 @@ function callSendAPI(sender_psid, response) {
   'headers': {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({
+  body: {
     "recipient": {
       "id": sender_psid
     },
     "message": {
       "text": "hello, world!"
     }
-  })
+  }
 
 };
 request(options, function (error, response) {
