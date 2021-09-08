@@ -132,47 +132,47 @@ function handlePostback(sender_psid, received_postback) {
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
   
-var options = {
-  'method': 'GET',
-  'url': 'https://graph.facebook.com/v11.0/me/messages?access_token='+process.env.FB_PAGE_TOKEN,
-  'headers': {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    "recipient": {
-      "id": sender_psid
-    },
-    "message": {
-      "text": "hello, world!"
-    }
-  })
+// var options = {
+//   'method': 'GET',
+//   'url': 'https://graph.facebook.com/v11.0/me/messages?access_token='+process.env.FB_PAGE_TOKEN,
+//   'headers': {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//     "recipient": {
+//       "id": sender_psid
+//     },
+//     "message": {
+//       "text": "hello, world!"
+//     }
+//   })
 
-};
-request(options, function (error, response) {
-  if (error) throw new Error(error);
-  console.log(response.body);
-});
+// };
+// request(options, function (error, response) {
+//   if (error) throw new Error(error);
+//   console.log(response.body);
+// });
  
-//     let request_body = {
-//         "recipient": {
-//             "id": sender_psid
-//         },
-//         "message": { "text": response }
-//     };
+    let request_body = {
+        "recipient": {
+            "id": sender_psid
+        },
+        "message": { "text": response }
+    };
   
-//     request({
-//         "uri": "https://graph.facebook.com/v11.0/me/messages",
-//         "qs": { "access_token": process.env.FB_PAGE_TOKEN },
-//         "method": "POST",
-//         "json": request_body
-//     }, (err, res, body) => {
-//         if (!err) {
-//             console.log('message sent!');
-//             console.log(body);
-//         } else {
-//             console.error("Unable to send message:" + err);
-//         }
-//     });
+    request({
+        "uri": "https://graph.facebook.com/v11.0/me/messages",
+        "qs": { "access_token": process.env.FB_PAGE_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('message sent!');
+            console.log(body);
+        } else {
+            console.error("Unable to send message:" + err);
+        }
+    });
 }
 
 function firstTrait(nlp, name) {
