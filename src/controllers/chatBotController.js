@@ -133,8 +133,8 @@ function handlePostback(sender_psid, received_postback) {
 function callSendAPI(sender_psid, response) {
   
 var options = {
-  'method': 'POST',
-  'url': 'https://graph.facebook.com/v11.0/me/messages?access_token='+process.env.FB_PAGE_TOKEN,
+  'method': 'GET',
+  'url': 'https://graph.facebook.com/v11.0/me?access_token='+process.env.FB_PAGE_TOKEN,
   'headers': {
     'Content-Type': 'application/json'
   },
