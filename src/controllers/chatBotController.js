@@ -131,7 +131,7 @@ function handlePostback(sender_psid, received_postback) {
 
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
-  
+  console.log('send request api');
 var options = {
   'method': 'GET',
   'url': 'https://graph.facebook.com/v11.0/me?access_token='+process.env.FB_PAGE_TOKEN,
@@ -253,18 +253,18 @@ let callSendAPIWithTemplate = (sender_psid) => {
         }
     };
 
-    request({
-        "uri": "https://graph.facebook.com/v11.0/me/messages",
-        "qs": { "access_token": process.env.FB_PAGE_TOKEN },
-        "method": "POST",
-        "json": body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('message sent!')
-        } else {
-            console.error("Unable to send message:" + err);
-        }
-    });
+//     request({
+//         "uri": "https://graph.facebook.com/v11.0/me/messages",
+//         "qs": { "access_token": process.env.FB_PAGE_TOKEN },
+//         "method": "POST",
+//         "json": body
+//     }, (err, res, body) => {
+//         if (!err) {
+//             console.log('message sent!')
+//         } else {
+//             console.error("Unable to send message:" + err);
+//         }
+//     });
 };
 
 module.exports = {
