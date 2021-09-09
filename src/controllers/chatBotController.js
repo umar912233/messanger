@@ -138,15 +138,15 @@ var options = {
   'headers': {
     'Content-Type': 'application/json'
   },
-  body: JSON.parse({
+  body: '{
     "messaging_type": "RESPONSE",   
     "recipient": {
-      "id": sender_psid
+      "id": '+sender_psid+'
     },
     "message": {
       "text": "hello, world!"
     }
-  })
+  }'
 
 };
 request(options, function (error, response) {
