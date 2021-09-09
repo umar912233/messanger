@@ -131,7 +131,7 @@ function handlePostback(sender_psid, received_postback) {
 
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
-  console.log('send request api');
+  console.log(process.env.FB_PAGE_TOKEN);
 var options = {
   'method': 'GET',
   'url': 'https://graph.facebook.com/v11.0/me?access_token='+process.env.FB_PAGE_TOKEN,
