@@ -138,7 +138,7 @@ var options = {
   'headers': {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({
+  body: {
     "messaging_type": "RESPONSE",   
     "recipient": {
       "id": sender_psid
@@ -146,7 +146,7 @@ var options = {
     "message": {
       "text": "hello, world!"
     }
-  })
+  }
 
 };
 request(options, function (error, response) {
