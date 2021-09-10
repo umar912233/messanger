@@ -134,7 +134,7 @@ function callSendAPI(sender_psid, response) {
     
     var options = {
   'method': 'GET',
-  'url': 'https://graph.facebook.com/10227554515227304/accounts?fields=name,access_token&access_token=EAAGJZBvP1FIsBAPlpMAkKNM7IrYbuns935vAFq9KRUFqvYei3R8zB5aEZC14swhCOTTyyTevdoUgPUsJMKXJYS4vwmFWCdoSLpmbcESlCfNDGcSqAAZAkSZB13pWyverxy5jp2GyIZArq8Dblo3z1OXzXDbYrQRZCZB6wFvZBx6eF7zZAkCwU1NFqxZAhilugnK2NMAdFf0nlbLMYiCKQfQZB5O',
+  'url': 'https://graph.facebook.com/10227554515227304/accounts?fields=name,access_token&access_token=EAAGJZBvP1FIsBAOS8MHROT3HY9nCJg9oOkbyIx8euofoNIUnFvmpNoi3kjpUs1LUDXrfhbx6l8eHHifi0UZCiJAw2TdB9ZAhJdpq1WMD46uZA3rEZAdebl4RqUK7223qKi4TxoPzkDcYVNG3mdDA2FSyXzdzbFH2igW05UrcAZASQC4IbZA1a0J2Wc2L8eIefZCvZCIXZBdiRqlezqRjLXTZCcOL5NxIgAZBDT8ZD',
   'headers': {
     'Content-Type': 'application/json'
   }
