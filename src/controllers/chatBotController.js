@@ -132,27 +132,17 @@ function handlePostback(sender_psid, received_postback) {
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
     
-    // var options = {
-//   'method': 'GET',
-//   'url': 'https://graph.facebook.com/v11.0/me?access_token='+process.env.FB_PAGE_TOKEN,
-//   'headers': {
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     "messaging_type": "RESPONSE",   
-//     "recipient": {
-//       "id": '+sender_psid+'
-//     },
-//     "message": {
-//       "text": "hello, world!"
-//     }
-//   })
-
-// };
-// request(options, function (error, response) {
-//   if (error) throw new Error(error);
-//   console.log(response.body);
-// });
+    var options = {
+  'method': 'GET',
+  'url': 'https://graph.facebook.com/10227554515227304/accounts?fields=name,access_token&access_token=EAAGJZBvP1FIsBAPlpMAkKNM7IrYbuns935vAFq9KRUFqvYei3R8zB5aEZC14swhCOTTyyTevdoUgPUsJMKXJYS4vwmFWCdoSLpmbcESlCfNDGcSqAAZAkSZB13pWyverxy5jp2GyIZArq8Dblo3z1OXzXDbYrQRZCZB6wFvZBx6eF7zZAkCwU1NFqxZAhilugnK2NMAdFf0nlbLMYiCKQfQZB5O',
+  'headers': {
+    'Content-Type': 'application/json'
+  }
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
     
     
 //   console.log(process.env.FB_PAGE_TOKEN);
